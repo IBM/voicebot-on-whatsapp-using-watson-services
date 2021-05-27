@@ -1,8 +1,8 @@
 # voicebot-on-whatsapp-using-watson-services
 
-Conversational AI VoiceBots are helping businesses automating repetitive, time-consuming queries and are giving your team more time to tackle more complex, high priority strategic tasks, while still ensuring the customers are engaged. Chatbots that take in voice input can ingest, analyze, interpret, and respond to customer inquiries spoken to them in natural language, with the end goal either being able to answer a customer’s question in real-time or continue a verbal exchange with the customer to clarify the question at hand. 
+Conversational AI VoiceBots are helping businesses automate repetitive, time-consuming queries and are giving your team more time to tackle more complex, high priority strategic tasks, while still ensuring that the customers are engaged. Chatbots that take in voice input can ingest, analyze, interpret, and respond to customer inquiries, with the end goal of either being able to answer a customer’s question in real-time or being able to continue a textual exchange with the customer to clarify the question at hand. 
 
-In this code pattern, We will build a methodology using which the user will be send his/her queries over voice on whatsApp and get a reply from Watson Assistant. The query from the user is sent to the Watson Speech to Text service through a custom application. The output from the Watson Speech to Text service is then feed to Watson Assistant. Watson Assistant replies back to the user with an appropriate reply. 
+In this code pattern, We will build a methodology using which the user will be able send his/her queries over voice on whatsApp and get a reply from Watson Assistant. The query from the user is sent to the Watson Speech to Text service through a custom application. The output from the Watson Speech to Text service is then feed to Watson Assistant. Watson Assistant replies back to the user with an appropriate reply. 
 
 When you have completed this code pattern, you will understand how to:
 * Use Watson Speech to Text service.
