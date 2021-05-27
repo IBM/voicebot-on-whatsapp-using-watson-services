@@ -28,8 +28,8 @@ When you have completed this code pattern, you will understand how to:
 
 # Pre Requisites
 
-1. [IBM Cloud Account](https://cloud.ibm.com/registration).
-2. [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started&locale=en-US).
+1. [IBM Cloud Account](https://cloud.ibm.com/registration): Create an IBM Cloud account.
+2. [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started&locale=en-US): Download and Install IBM Cloud CLI tool..
 3. [OpenShift ROKS Cluster](https://cloud.ibm.com/kubernetes/catalog/create?platformType=openshift): Create an OpenShift Cluster.
 4. [OC CLI](https://docs.openshift.com/container-platform/4.6/cli_reference/openshift_cli/getting-started-cli.html): Download and Install OpenShift CLI tool.
 5. [Git Client](https://git-scm.com/downloads): Download Git Client CLI.
