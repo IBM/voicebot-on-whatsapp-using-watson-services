@@ -1,0 +1,319 @@
+{
+  "intents": [
+    {
+      "intent": "duplicateofaccount",
+      "examples": [
+        {
+          "text": "Envia boleto deste mês."
+        },
+        {
+          "text": "Enviam boletos desse mês."
+        },
+        {
+          "text": "Envia o boleto deste mês."
+        },
+        {
+          "text": "Envie o boleto desse mesmo favor."
+        },
+        {
+          "text": "Pode me enviar a segunda via da conta"
+        }
+      ],
+      "description": "You can send me the duplicate of the account"
+    },
+    {
+      "intent": "duplicateofticket",
+      "examples": [
+        {
+          "text": "Era a segunda via do boleto."
+        },
+        {
+          "text": "Quero a segunda via do boleto"
+        },
+        {
+          "text": "Quero a segunda via do boleto."
+        }
+      ],
+      "description": "I want the duplicate of the ticket"
+    },
+    {
+      "intent": "paybill",
+      "examples": [
+        {
+          "text": "Eu quero pagar a conta."
+        },
+        {
+          "text": "Quero pagar a conta"
+        },
+        {
+          "text": "Quero pagar a conta."
+        },
+        {
+          "text": "Quero pagar a conto"
+        }
+      ],
+      "description": "I want to pay the bill"
+    },
+    {
+      "intent": "paymentnumber",
+      "examples": [
+        {
+          "text": "Quero o número do pis para pagamento."
+        },
+        {
+          "text": "Quero o número para pagamenta"
+        },
+        {
+          "text": "Quero o número para pagamento"
+        },
+        {
+          "text": "Quero o número para pagamento."
+        }
+      ],
+      "description": "I want the payment number"
+    },
+    {
+      "intent": "sendcodeforpayment",
+      "examples": [
+        {
+          "text": "Poderei enviar o código para pagamento."
+        },
+        {
+          "text": "Poderia enviar o código para pagamento"
+        },
+        {
+          "text": "Poderia enviar o código para pagamento."
+        },
+        {
+          "text": "Poderia enviar um código para pagamento."
+        }
+      ],
+      "description": "You could send the code for payment via the bank slip for that month"
+    },
+    {
+      "intent": "thismonthsticket",
+      "examples": [
+        {
+          "text": "Envia boleto deste mês."
+        },
+        {
+          "text": "Envia o boleto desse mês"
+        },
+        {
+          "text": "Envia o boleto deste mês."
+        },
+        {
+          "text": "Envie o boleto desse mesmo favor."
+        }
+      ],
+      "description": "Send this month’s ticket"
+    }
+  ],
+  "entities": [],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Bem-vindo",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Olá. Eu sou o Watson Assistant. Como posso ajudá-lo?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Bem-vindo"
+    },
+    {
+      "type": "standard",
+      "title": "Em outros casos",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Eu não entendi. Você pode tentar reformular a frase."
+              },
+              {
+                "text": "Você pode reformular sua afirmação? Eu não estou entendendo."
+              },
+              {
+                "text": "Eu não entendi o sentido."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Em outros casos",
+      "previous_sibling": "node_10_1620889947588",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "folder",
+      "title": "Content",
+      "dialog_node": "node_10_1620889947588",
+      "previous_sibling": "Bem-vindo"
+    },
+    {
+      "type": "standard",
+      "title": "Send this months Ticket",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Tudo bem, estou enviando o boleto deste mês"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1620889947588",
+      "conditions": "#thismonthsticket",
+      "dialog_node": "node_10_1620889960520"
+    },
+    {
+      "type": "standard",
+      "title": "I want the payment number",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Ok, segue o código do boleto para pagamento."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1620889947588",
+      "conditions": "#paymentnumber",
+      "dialog_node": "node_2_1620890473460",
+      "previous_sibling": "node_2_1621417485167"
+    },
+    {
+      "type": "standard",
+      "title": "I want the duplicate of the ticket",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Tudo bem, estou enviando a segunda via da sua conta."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1620889947588",
+      "conditions": "#duplicateofticket",
+      "dialog_node": "node_2_1621417485167",
+      "previous_sibling": "node_9_1620890410154"
+    },
+    {
+      "type": "standard",
+      "title": "You can send me the duplicate of the account",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Tudo bem, estou enviando a segunda via da sua conta."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1620889947588",
+      "conditions": "#duplicateofaccount",
+      "dialog_node": "node_3_1620890333645",
+      "previous_sibling": "node_10_1620889960520"
+    },
+    {
+      "type": "standard",
+      "title": "I want to pay the bill",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Você gostaria de receber o boleto ou somente o código para pagamento?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1620889947588",
+      "conditions": "#paybill",
+      "dialog_node": "node_3_1620890546950",
+      "previous_sibling": "node_2_1620890473460"
+    },
+    {
+      "type": "standard",
+      "title": "You could send the code for payment via the bank slip for that month",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Ok, segue o código do boleto para pagamento."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1620889947588",
+      "conditions": "#sendcodeforpayment",
+      "dialog_node": "node_9_1620890410154",
+      "previous_sibling": "node_3_1620890333645"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "disambiguation": {
+      "prompt": "Você quis dizer:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "Nenhuma das anteriores"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Você quis dizer:"
+    }
+  },
+  "learning_opt_out": false,
+  "name": "Portugues Assistant Skill",
+  "language": "pt-br",
+  "description": ""
+}

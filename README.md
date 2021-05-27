@@ -10,7 +10,7 @@ When you have completed this code pattern, you will understand how to:
 * [goal 4]
 
 <!--add an image in this path-->
-![architecture](doc/source/images/architecture.png)
+![architecture](doc/source/images/Architecture.png)
 
 <!--Optionally, add flow steps based on the architecture diagram-->
 ## Flow
@@ -49,13 +49,77 @@ Clone the `/voicebot-on-whatsapp-using-watson-services` repo locally. In a termi
 ```bash
 git clone https://github.com/IBM//voicebot-on-whatsapp-using-watson-services.git
 ```
+We will be using the following directory:
+
+- `python-application/` - To build and deploy the application.
 
 ### 2. Create Watson Services
 
 Create the following Watson Services:
 #### 2.1: Watson Speech to Text service
+##### 2.1.1: Create service
+<details><summary><b>IBM Cloud Pak for Data</b></summary>
+
+- On Cloud Pak for Data, go to the **Service catalog** and deploy Watson Speech To Text Service, by clicking on the `Deploy` and following the instructions.
+![Speech-to-text-service-cp4d](doc/source/images/stt-service-cp4d.png)
+</details>
+
+<details><summary><b>IBM Cloud</b></summary>
+
+- On IBM Cloud, create a [Watson Speech To Text Service](https://cloud.ibm.com/catalog/services/speech-to-text), under `Select a pricing plan` select `Lite` and click on `create` as shown.
+![Speech-to-text-service](doc/source/images/stt-service.png)
+</details>
+
+##### 2.1.2: Copy service credentials
+- In Speech To Text Dashboard, Click on `Services Credentials`
+![](doc/source/images/service-credentials.png)
+
+- Click on `New credential` and add a service credential as shown. 
+![](doc/source/images/create-stt-credentials.gif)
+
+**NOTE:** Once the credential is created, copy and save the credentials in a text file for using it in later steps in this code pattern.
 
 #### 2.2: Watson Assistant service
+##### 2.2.1: Create service
+<details><summary><b>IBM Cloud Pak for Data</b></summary>
+
+- On Cloud Pak for Data, go to the **Service catalog** and deploy Watson Assistant Service by clicking on the `Deploy` and following the instructions.
+![assistant-service-cp4d](doc/source/images/wa-service-cp4d.png)
+
+</details>
+
+<details><summary><b>IBM Cloud</b></summary>
+
+- On IBM Cloud, create a [Watson Assistant Service](https://cloud.ibm.com/catalog/services/speech-to-text), under `Select a pricing plan` select `Lite` and click on `create` as shown.
+![assistant-service](doc/source/images/wa-service.png)
+</details>
+
+##### 2.2.2: Copy credentials
+
+- In Watson Assistant Dashboard, Click on `Services Credentials` and delete all the existing credentials. Create a new credential by clicking on `New credential`.
+![](doc/source/images/wa-service-creds.png)
+
+>Note: Deleting of existing credentials and creating a new service credentials is required because the `https://gateway-lon.watsonplatform.net` url is deprecated, on creating a new credential you should see an url like `https://api.eu-gb.assistant.watson.cloud.ibm.com`.
+
+- In Watson Assistant Dashboard, Click on `Manage` and **Launch** the Watson Assistant.
+![](doc/source/images/wa-assistant.png)
+
+- Click on **Create assistant** and give your assistant a name and create it.
+![](doc/source/images/create-assistant.png)
+
+- In Assistant dashboard, under **Dialog** click on **add dilog skill**.
+![](doc/source/images/create-dilog.png)
+
+- Select **Upload skill** and upload the `skill-Portugues-Assistant-Skill.json` skill present in [`/watson-assistant-skill/`](watson-assistant-skill/) directory.
+![](doc/source/images/upload-skill.png)
+
+- In Assistant dashboard, click on the three dots and select **Assistant settings**.
+![](doc/source/images/three-dots.png)
+
+- Copy the `Assistant ID`, `Assistant URL` and `API key` as shown.
+![](doc/source/images/wa-creds.png)
+
+**NOTE:** Copy `Assistant ID`, `Assistant URL` and `API key` and save the credentials in a text file for using it in later steps in this code pattern.
 
 ### 3. Build and Deploy the Python Application
 
