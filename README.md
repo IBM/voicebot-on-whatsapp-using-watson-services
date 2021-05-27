@@ -1,13 +1,14 @@
 # voicebot-on-whatsapp-using-watson-services
 
-In this code pattern, we will [create something] using [technologies] and [components]. [Explain briefly how things work]. [Give acknowledgements to others if necessary]
+Conversational AI VoiceBots are helping businesses automating repetitive, time-consuming queries and are giving your team more time to tackle more complex, high priority strategic tasks, while still ensuring the customers are engaged. Chatbots that take in voice input can ingest, analyze, interpret, and respond to customer inquiries spoken to them in natural language, with the end goal either being able to answer a customer’s question in real-time or continue a verbal exchange with the customer to clarify the question at hand. 
+
+In this code pattern, We will build a methodology using which the user will be send his/her queries over voice on whatsApp and get a reply from Watson Assistant. The query from the user is sent to the Watson Speech to Text service through a custom application. The output from the Watson Speech to Text service is then feed to Watson Assistant. Watson Assistant replies back to the user with an appropriate reply. 
 
 When you have completed this code pattern, you will understand how to:
-
-* [goal 1]
-* [goal 2]
-* [goal 3]
-* [goal 4]
+* Use Watson Speech to Text service.
+* Use Watson Assistant service.
+* Integrate WhatsApp with Watson services.
+* Handle queries sent over voice on WhatsApp. 
 
 <!--add an image in this path-->
 ![architecture](doc/source/images/architecture.png)
