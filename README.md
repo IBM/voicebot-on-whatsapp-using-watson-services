@@ -26,12 +26,50 @@ When you have completed this code pattern, you will understand how to:
 
 <!-- [![video](http://img.youtube.com/vi/Jxi7U7VOMYg/0.jpg)](https://www.youtube.com/watch?v=Jxi7U7VOMYg) -->
 
+# Pre Requisites
+
+1. [IBM Cloud Account](https://cloud.ibm.com/registration).
+2. [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started&locale=en-US).
+3. [OpenShift ROKS Cluster](https://cloud.ibm.com/kubernetes/catalog/create?platformType=openshift): Create an OpenShift Cluster.
+4. [OC CLI](https://docs.openshift.com/container-platform/4.6/cli_reference/openshift_cli/getting-started-cli.html): Download and Install OpenShift CLI tool.
+5. [Git Client](https://git-scm.com/downloads): Download Git Client CLI.
+
 # Steps
 
+1. [Clone the repo](#1-clone-the-repo)
+2. [Create Watson Services](#2-create-watson-services)
+3. [Build and Deploy the Python Application](#3-build-and-deploy-the-python-application)
+4. [Create Twilio service](#4-create-twilio-service)
+5. [Try out voicebot on WhatsApp](#5-try-out-voicebot-on-whatsapp)
 
-# Sample output
+### 1. Clone the repo
 
-![sample_output](doc/source/images/sample_output.png)
+Clone the `/voicebot-on-whatsapp-using-watson-services` repo locally. In a terminal, run:
+
+```bash
+git clone https://github.com/IBM//voicebot-on-whatsapp-using-watson-services.git
+```
+
+### 2. Create Watson Services
+
+Create the following Watson Services:
+#### 2.1: Watson Speech to Text service
+
+#### 2.2: Watson Assistant service
+
+### 3. Build and Deploy the Python Application
+
+#### 3.1: Build
+#### 3.2: Deploy
+
+### 4. Create Twilio service
+
+### 5. Try out voicebot on WhatsApp
+
+
+## Summary
+In this Code Pattern you learned to create a chatbot using Watson Assistant which securely verifies user identity using SMS OTP authentication and interacts to display confidential information.
+
 
 ## Questions
 
