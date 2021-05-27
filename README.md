@@ -69,7 +69,8 @@ Create the following Watson Services:
 
 
 ## Summary
-In this Code Pattern you learned to create a chatbot using Watson Assistant which securely verifies user identity using SMS OTP authentication and interacts to display confidential information.
+
+In this Code Pattern you learned how to create a WhatsApp Chatbot that take in voice input and get a reply from Watson Assistant. We used WhatsApp, Watson Speech to text, Watson Assistant and a custom python application to build this solution.
 
 
 ## Questions
