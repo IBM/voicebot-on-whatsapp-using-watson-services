@@ -16,11 +16,14 @@ When you have completed this code pattern, you will understand how to:
 <!--Optionally, add flow steps based on the architecture diagram-->
 ## Flow
 
-1. Step 1.
-2. Step 2.
-3. Step 3.
-4. Step 4.
-5. Step 5.
+1. User sends a voice or text message in WhatsApp
+2. The message is redirected to Twilio Programmable messaging service
+3. Twilio redirects the message to the python application deployed on IBM Cloud or OpenShift
+4. If the user has sent a voice message, the python application leverages Watson Speech to Text to transcribe the message into text
+5. The text message is sent to Watson Assistant
+6. Watson Assistant chatbot detects the intent and replies with response accordingly
+7. The python application triggers the Twilio Programmable messaging service with the response message
+8. Twilio Programmable messaging service redirects the response message to WhatsApp
 
 <!--Optionally, update this section when the video is created-->
 # Watch the Video
@@ -30,7 +33,7 @@ When you have completed this code pattern, you will understand how to:
 # Pre Requisites
 
 1. [IBM Cloud Account](https://cloud.ibm.com/registration): Create an IBM Cloud account.
-2. [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started&locale=en-US): Download and Install IBM Cloud CLI tool..
+2. [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started&locale=en-US): Download and Install IBM Cloud CLI tool.
 3. [OpenShift ROKS Cluster](https://cloud.ibm.com/kubernetes/catalog/create?platformType=openshift): Create an OpenShift Cluster.
 4. [OC CLI](https://docs.openshift.com/container-platform/4.6/cli_reference/openshift_cli/getting-started-cli.html): Download and Install OpenShift CLI tool.
 5. [Git Client](https://git-scm.com/downloads): Download Git Client CLI.
@@ -57,8 +60,12 @@ We will be using the following directory:
 ### 2. Create Watson Services
 
 Create the following Watson Services:
-#### 2.1: Watson Speech to Text service
-##### 2.1.1: Create service
+- Watson Speech to Text
+- Watson Assistant
+
+#### Watson Speech to Text service
+##### Create service
+Watson Speech to Text service can be created on IBM Cloud Pak for Data as well as on IBM Cloud. Follow the steps accordingly to create service in either of the platform.
 <details><summary><b>IBM Cloud Pak for Data</b></summary>
 
 - On Cloud Pak for Data, go to the **Service catalog** and deploy Watson Speech To Text Service, by clicking on the `Deploy` and following the instructions.
@@ -71,7 +78,7 @@ Create the following Watson Services:
 ![Speech-to-text-service](doc/source/images/stt-service.png)
 </details>
 
-##### 2.1.2: Copy service credentials
+##### Copy service credentials
 - In Speech To Text Dashboard, Click on `Services Credentials`
 ![](doc/source/images/service-credentials.png)
 
@@ -80,8 +87,10 @@ Create the following Watson Services:
 
 **NOTE:** Once the credential is created, copy and save the credentials in a text file for using it in later steps in this code pattern.
 
-#### 2.2: Watson Assistant service
-##### 2.2.1: Create service
+#### Watson Assistant service
+##### Create service
+Watson Assistant service can be created on IBM Cloud Pak for Data as well as on IBM Cloud. Follow the steps accordingly to create service in either of the platform.
+
 <details><summary><b>IBM Cloud Pak for Data</b></summary>
 
 - On Cloud Pak for Data, go to the **Service catalog** and deploy Watson Assistant Service by clicking on the `Deploy` and following the instructions.
@@ -95,12 +104,12 @@ Create the following Watson Services:
 ![assistant-service](doc/source/images/wa-service.png)
 </details>
 
-##### 2.2.2: Copy credentials
+##### Copy credentials
 
-- In Watson Assistant Dashboard, Click on `Services Credentials` and delete all the existing credentials. Create a new credential by clicking on `New credential`.
+<!-- - In Watson Assistant Dashboard, Click on `Services Credentials` and delete all the existing credentials. Create a new credential by clicking on `New credential`.
 ![](doc/source/images/wa-service-creds.png)
 
->Note: Deleting of existing credentials and creating a new service credentials is required because the `https://gateway-lon.watsonplatform.net` url is deprecated, on creating a new credential you should see an url like `https://api.eu-gb.assistant.watson.cloud.ibm.com`.
+>Note: Deleting of existing credentials and creating a new service credentials is required because the `https://gateway-lon.watsonplatform.net` url is deprecated, on creating a new credential you should see an url like `https://api.eu-gb.assistant.watson.cloud.ibm.com`. -->
 
 - In Watson Assistant Dashboard, Click on `Manage` and **Launch** the Watson Assistant.
 ![](doc/source/images/wa-assistant.png)
