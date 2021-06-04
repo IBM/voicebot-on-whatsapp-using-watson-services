@@ -23,7 +23,9 @@ When you have completed this code pattern, you will understand how to:
 5. The text message is sent to Watson Assistant
 6. Watson Assistant chatbot detects the intent and replies with response accordingly
 7. The python application triggers the Twilio Programmable messaging service with the response message
-8. Twilio Programmable messaging service redirects the response message to WhatsApp
+8. The response is redirected to Twilio Programmable messaging service
+9. Twilio Programmable messaging service redirects the response message to WhatsApp
+10. User will be able to view the response message on Whatsapp
 
 <!--Optionally, update this section when the video is created-->
 # Watch the Video
