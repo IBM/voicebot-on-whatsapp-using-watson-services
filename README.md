@@ -18,11 +18,11 @@ When you have completed this code pattern, you will understand how to:
 
 1. User sends a voice or text message in WhatsApp
 2. The message is redirected to Twilio Programmable messaging service
-3. Twilio redirects the message to the python application deployed on IBM Cloud or OpenShift
-4. If the user has sent a voice message, the python application leverages Watson Speech to Text to transcribe the message into text
+3. Twilio redirects the message to the Voicebot Application deployed on IBM Cloud or OpenShift
+4. If the user has sent a voice message, the Voicebot Application leverages Watson Speech to Text to transcribe the message into text
 5. The text message is sent to Watson Assistant
 6. Watson Assistant chatbot detects the intent and replies with response accordingly
-7. The python application triggers the Twilio Programmable messaging service with the response message
+7. The Voicebot Application triggers the Twilio Programmable messaging service with the response message
 8. Twilio Programmable messaging service redirects the response message to WhatsApp
 10. User will be able to view the response message on Whatsapp
 
@@ -43,7 +43,7 @@ When you have completed this code pattern, you will understand how to:
 
 1. [Clone the repo](#1-clone-the-repo)
 2. [Create Watson Services](#2-create-watson-services)
-3. [Build and Deploy the Python Application](#3-build-and-deploy-the-python-application)
+3. [Build and Deploy the Voicebot Application](#3-build-and-deploy-the-voicebot-app)
 4. [Create Twilio service](#4-create-twilio-service)
 5. [Try out voicebot on WhatsApp](#5-try-out-voicebot-on-whatsapp)
 
@@ -56,7 +56,7 @@ git clone https://github.com/IBM//voicebot-on-whatsapp-using-watson-services.git
 ```
 We will be using the following directory:
 
-- `python-application/` - To build and deploy the application.
+- `voicebot-app/` - To build and deploy the application.
 
 ### 2. Create Watson Services
 
@@ -132,12 +132,7 @@ Watson Assistant service can be created on IBM Cloud Pak for Data as well as on 
 
 **NOTE:** Copy `Assistant ID`, `Assistant URL` and `API key` and save the credentials in a text file for using it in later steps in this code pattern.
 
-### 3. Build and Deploy the Python Application
-
-#### 3.1: Build and Deploy on OpenShift
-#### 3.2: Build and Deploy on IBM Cloud Foundry
-
-### 4. Create Twilio service
+### 3. Create Twilio service
 Twlio is a SaaS offering that provides APIs to make and receive calls or text messages. As there are no APIs from WhatsApp directly availabe to send and receive WhatsApp messages programmatically, you will learn how to use Twilio's messaging service APIs that provides gateway to communicate with WhatsApp programmatically. Get started by creating a free Twilio service.
 
 - Create a free Twilio service here: <https://www.twilio.com/try-twilio>.
@@ -171,26 +166,197 @@ Twlio is a SaaS offering that provides APIs to make and receive calls or text me
 - The sandbox for WhatsApp will appear, make a note of the `Sandbox Name` which will be prefixed with **join**, click on **Settings** on the left panel and select **WhatsApp Sandbox Settings**.
 ![](doc/source/images/twilioSettings.png) 
 
-- In **WhatsApp Sandbox Settings** page, under **Sandbox Configuration**, there will be a field called **WHEN A MESSAGE COMES IN**, replace the existing URL in that field with the `URL` obtained by deploying the Python Application from [Step 3](#3-build-and-deploy-the-python-application), finally click on **Save** to save the configuration.
+- In **WhatsApp Sandbox Settings** page, under **Sandbox Configuration**, there will be a field called **WHEN A MESSAGE COMES IN**, replace the existing URL in that field with the `URL` obtained by deploying the Voicebot Application from [Step 3](#3-build-and-deploy-the-voicebot-app), finally click on **Save** to save the configuration.
 ![](doc/source/images/whatsappSandbox.png)
 
->NOTE: Sometimes the changes are not saved in Twilio WhatsApp Sandbox Settings even after clicking on save, reload the page to enusre the `URL` that you have entered in **WHEN A MESSAGE COMES IN** field is reflecting over there. If you still see the old URL over there then enter the `URL` from [Step 3](#3-build-and-deploy-the-python-application) again and save it.
+>NOTE: Sometimes the changes are not saved in Twilio WhatsApp Sandbox Settings even after clicking on save, reload the page to enusre the `URL` that you have entered in **WHEN A MESSAGE COMES IN** field is reflecting over there. If you still see the old URL over there then enter the `URL` from [Step 3](#3-build-and-deploy-the-voicebot-app) again and save it.
 
-- Now the Python Application is configured in Twilio, any message that you send from WhatsApp from this point will go to the Python Application via Twilio WhatsApp Sandbox. However to reply back to you from WhatsApp the Python Application needs to establish connection with Twilio.
+- Now the Voicebot Application is configured in Twilio, any message that you send from WhatsApp from this point will go to the Voicebot Application via Twilio WhatsApp Sandbox. However to reply back to you from WhatsApp the Voicebot Application needs to establish connection with Twilio.
 
-- To establish connection between the Python Application and Twilio we need to get the `account_sid` and `auth_token` from Twilio. 
+- To establish connection between the Voicebot Application and Twilio we need to get the `account_sid` and `auth_token` from Twilio. 
 
 - Visit <https://www.twilio.com/console> and expand the **Project Info** tab. You will see the `ACCOUNT ID` and `AUTH TOKEN`, copy it in some notepad as it will be used in [Step 5](#5-configure-credentials).
  ![](doc/source/images/twilio-credentials-from-twilio-console.png)
 
-- At this point, you should have the `Sandbox Name`, `account_sid` and `auth_token` from Twilio service.ss
+- At this point, you should have the `Sandbox Name`, `account_sid` and `auth_token` from Twilio service.
 
-### 5. Try out voicebot on WhatsApp
+### 4. Build and Deploy the Voicebot Application
+The Voicebot Application is an intermediator that connects Watson services and Twilio service. This application must be deployed in order to access it from Twilio WhatsApp Sandbox. You can either deploy the application on your OpenShift cluster or on any public hosting services like Cloud Foundry. Follow the documentation accordingly
 
+<details><summary><b>Steps to Build and Deploy on OpenShift</b></summary>
+
+<b>Note:</b> If you want to deploy the Voicebot Application without any modifications, you can skip the **Build** steps and directly follow the **Deploy** steps. If you want to make some modifications in the Voicebot Application and then deploy it then follow the **Build** step.
+
+#### Build
+> Note: Make sure you have docker cli installed and logged in to DockerHub
+
+- In cloned repo, navigate to `voicebot-app/` directory and build the docker image. In terminal run:
+```bash
+$ docker build -t <your-docker-username>/voicebot-app:v1 .
+```
+> Replace `<your-docker-username>` with your docker hub username
+
+- Once the docker image is built, store the docker image to Dockerhub. In terminal run:
+```bash
+$ docker push <your-docker-username>/voicebot-app:v1
+```
+
+- At this point you have built the container image and successfully pushed to to a container repository dockerhub. 
+
+- Copy the image tag `<your-docker-username>/voicebot-app:v1` and replace it on line no `18` in `voicebot-app/deploy.yaml`
+
+<pre><code>spec:
+      containers:
+      - name: voicebot-app
+        image:<b> < your-docker-username >/voicebot-app:v1 </b>
+        ports:
+        - containerPort: 8080
+</code></pre>
+
+
+#### Deploy
+
+- Login to your OpenShift cluster, In terminal run:
+```bash
+$ oc login -u <username> -p <password>
+```
+
+- Alternatively you can also login with an auth token. Follow the [Step here](https://developer.ibm.com/tutorials/configure-a-red-hat-openshift-cluster-with-red-hat-marketplace/#4-connect-to-the-openshift-cluster-in-your-cli) to login through an auth token.
+
+- Once you have logged into OpenShift from your terminal, you can run the `oc apply` command to deploy the application on OpenShift. From within the `voicebot-app/` directory, in terminal run:
+```bash
+$ cd voicebot-app/
+$ oc apply -f deploy.yaml
+```
+
+```
+deployment.apps/voicebot-app created
+service/voicebot-app-service created
+route.route.openshift.io/voicebot-app-url created
+```
+
+- A deployment, service and a route will be created. To access the App, In terminal run:
+```bash
+$ oc get route -n default
+```
+
+```
+NAME           HOST/PORT                                                                                                           PATH   SERVICES           PORT   TERMINATION   WILDCARD
+voicebot-app-url   voicebot-app-url-default.xxx.us-south.containers.appdomain.cloud   /      voicebot-app-service   8080                 None
+```
+
+- You will see the `PATH` for with service name `voicebot-app-url`.
+- Make a note of this url, as it will be used in step 4.
+
+>Example: http://voicebot-app-url-default.xxx.us-south.containers.appdomain.cloud
+
+- At this point, you will have successfully deployed the voicebot app on OpenShift. Now lets access it and see how it looks like.
+
+</details>
+
+<details><summary><b>Steps to Build and Deploy on IBM Public Cloud Foundry</b></summary>
+
+#### Build and Deploy
+
+- Before you proceed, make sure you have installed [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started&locale=en-US) in your deployment machine.
+
+- From the cloned repo, goto **voicebot-app** directory in terminal, and run the following commands to deploy the Application to IBM Cloud Foundry.
+
+    ```bash
+    $ cd voicebot-app/
+    ```
+
+* Log in to your IBM Cloud account, and select an API endpoint.
+    ```bash
+    $ ibmcloud login
+    ```
+
+    >NOTE: If you have a federated user ID, instead use the following command to log in with your single sign-on ID.
+
+    ```bash
+    $ ibmcloud login --sso
+    ```
+
+* Target a Cloud Foundry org and space:
+    ```bash
+    $ ibmcloud target --cf
+    ```
+
+* From within the _voicebot-app_ directory push your app to IBM Cloud.
+    ```bash
+    $ ibmcloud cf push otp-api
+    ```
+
+- The [manifest.yml](voicebot-app/manifest.yml) file will be used here to deploy the application to IBM Cloud Foundry.
+
+- On Successful deployment of the application you will see something similar on your terminal as shown.
+<pre><code>
+Invoking 'cf push'...
+Shown below is a sample output
+    
+Pushing from manifest to org abc@in.ibm.com / space dev as abc@in.ibm.com...
+    
+...
+    
+Waiting for app to start...
+    
+    name:              voicebot-app
+    requested state:   started
+    routes:            <b>voicebot-app.xx-xx.mybluemix.net </b>
+    last uploaded:     Sat 16 May 18:05:16 IST 2020
+    stack:             cflinuxfs3
+    buildpacks:        python
+    
+    type:            web
+    instances:       1/1
+    memory usage:    512M
+    start command:   python app.py
+        state     since                  cpu     memory           disk           details
+    #0   <b>running</b>   2020-05-16T12:36:15Z   12.6%   116.5M of 512M   796.2M of 1
+</code></pre>
+
+* Once the app is deployed, from the output of the above command, you can visit the `routes` to launch the application.
+
+* Make a note of this url, as it will be used in step 4.
+
+>Example: http://voicebot-app.xx-xx.mybluemix.net if deployed on IBM Cloud Foundry, http://voicebot-app-url-default.xxx.us-south.containers.appdomain.cloud if deployed on OpenShift
+
+>Note: Add `http://` to the OpenShift url if not present.
+
+- At this point, you will have successfully deployed the Voicebot app on IBM Cloud. Now lets access it and see how it looks like.
+
+</details>
+
+### 5. Configure Voicebot Application
+
+### 6. Try out voicebot on WhatsApp
+
+- In the voicebot app, you will see **View Application in Action** tab.
+
+![](doc/source/images/whatsappQR.png)
+
+- Scan the QR code in your Phone to open the WhatsApp chat with Twilio's messaging API.
+
+- A WhatsApp chat will open up in your phone with a typed code `join <sandbox name>`.
+
+- Replace the `<sandbox name>` with your `Sandbox Name` obtained from [Step 4](#4-create-twilio-service) and send the message.
+
+>NOTE: If you are unable to scan the QR code, save the phone number **+14155238886**, open WhatsApp and send a message to the saved number with code `join <sandbox name>`.
+
+You can follow the workflow of the app as follows:
+- User can send **Ola** or **Hi** to start a Watson Assistant session.
+
+- The user can either send a voice message or send a text message through WhatsApp's chat functionality.
+
+- The Watson Assistant will respond with textual reply accordingly.
+
+    ![](doc/source/images/whatsappss.png)
 
 ## Summary
 
-In this Code Pattern you learned how to create a WhatsApp Chatbot that take in voice input and get a reply from Watson Assistant. We used WhatsApp, Watson Speech to text, Watson Assistant and a custom python application to build this solution.
+In this Code Pattern you learned how to create a WhatsApp Chatbot that take in voice input and get a reply from Watson Assistant. You also learned how to use, Watson Assistant in conjunction with Watson Speech to Text. 
+
+This code pattern can be extended to any language. 
 
 
 ## Questions
