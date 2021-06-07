@@ -329,7 +329,25 @@ Waiting for app to start...
 </details>
 
 ### 5. Configure Voicebot Application
+Access the deployment URL created in previous step.
+- You will see a configuration page as shown.
+![](doc/source/images/sampleoutput.png)
+- You can see the **Status** of Twilio and Watson Services as **Not Configured**. Go ahead and click on **Add Twilio Credentials**. Enter the `ACCOUNT SID` and `AUTH TOKEN` copied in step 3.
+![](doc/source/images/configureTwilio.png)
 
+- Once you submit, you will see the Status of Twilio service as **Configured**.
+![](doc/source/images/twilioConfigured.png)
+
+- Similarly click on **Add Watson Assistant Credentials**.Enter the `APIKEY`, `URL` and `ASSISTANT-ID` credentials copied in Step 2.
+![](doc/source/images/waCredentialsConfig.png)
+
+- Finally click on the **Add Watson Speech to Text Credentials**. Enter the `APIKEY` and `URL` copied in step 2.
+![](doc/source/images/sttConfig.png)
+
+- Once all the services are configured you will see a status as **Configured**.
+![](doc/source/images/allConfigured.png)
+
+- At this point you have successfully configured the Voicebot Application
 ### 6. Try out voicebot on WhatsApp
 
 - In the voicebot app, you will see **View Application in Action** tab.
