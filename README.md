@@ -1,8 +1,8 @@
-# voicebot-on-whatsapp-using-watson-services
+# Create a conversational voice bot on WhatsApp with Watson services
 
 Conversational AI VoiceBots are helping businesses automate repetitive, time-consuming queries and are giving your team more time to tackle more complex, high priority strategic tasks, while still ensuring that the customers are engaged. Chatbots that take in voice input can ingest, analyze, interpret, and respond to customer inquiries, with the end goal of either being able to answer a customer’s question in real-time or being able to continue a textual exchange with the customer to clarify the question at hand. 
 
-In this code pattern, We will build a framework using which the user will be able send his/her queries over voice on whatsApp and get a reply from Watson Assistant. The query from the user is sent to the Watson Speech to Text service through a custom application. The output from the Watson Speech to Text service is then feed to Watson Assistant. Watson Assistant replies back to the user with an appropriate reply. 
+In this code pattern, We will build a framework using which the user will be able send his/her queries over voice on WhatsApp and get a reply from Watson Assistant. The query from the user is sent to the Watson Speech to Text service through a custom application. The output from the Watson Speech to Text service is then feed to Watson Assistant. Watson Assistant replies back to the user with an appropriate reply. 
 
 When you have completed this code pattern, you will understand how to:
 * Use Watson Speech to Text service.
@@ -24,7 +24,7 @@ When you have completed this code pattern, you will understand how to:
 6. Watson Assistant chatbot detects the intent and replies with response accordingly
 7. The Voicebot Application triggers the Twilio Programmable messaging service with the response message
 8. Twilio Programmable messaging service redirects the response message to WhatsApp
-10. User will be able to view the response message on Whatsapp
+10. User will be able to view the response message on WhatsApp
 
 <!--Optionally, update this section when the video is created-->
 # Watch the Video
@@ -65,8 +65,8 @@ Create the following Watson Services:
 - Watson Speech to Text
 - Watson Assistant
 
-#### Watson Speech to Text service
-##### Create service
+#### 2.1 Watson Speech to Text service
+##### 2.1.1 Create service
 Watson Speech to Text service can be created on IBM Cloud Pak for Data as well as on IBM Cloud. Follow the steps accordingly to create service in either of the platform.
 <details><summary><b>IBM Cloud Pak for Data</b></summary>
 
@@ -80,7 +80,7 @@ Watson Speech to Text service can be created on IBM Cloud Pak for Data as well a
 ![Speech-to-text-service](doc/source/images/stt-service.png)
 </details>
 
-##### Copy service credentials
+##### 2.1.2 Copy service credentials
 - In Speech To Text Dashboard, Click on `Services Credentials`
 ![](doc/source/images/service-credentials.png)
 
@@ -89,8 +89,8 @@ Watson Speech to Text service can be created on IBM Cloud Pak for Data as well a
 
 **NOTE:** Once the credential is created, copy and save the credentials in a text file for using it in later steps in this code pattern.
 
-#### Watson Assistant service
-##### Create service
+#### 2.2 Watson Assistant service
+##### 2.2.1 Create service
 Watson Assistant service can be created on IBM Cloud Pak for Data as well as on IBM Cloud. Follow the steps accordingly to create service in either of the platform.
 
 <details><summary><b>IBM Cloud Pak for Data</b></summary>
@@ -106,7 +106,7 @@ Watson Assistant service can be created on IBM Cloud Pak for Data as well as on 
 ![assistant-service](doc/source/images/wa-service.png)
 </details>
 
-##### Copy credentials
+##### 2.2.2 Copy credentials
 
 <!-- - In Watson Assistant Dashboard, Click on `Services Credentials` and delete all the existing credentials. Create a new credential by clicking on `New credential`.
 ![](doc/source/images/wa-service-creds.png)
@@ -134,7 +134,7 @@ Watson Assistant service can be created on IBM Cloud Pak for Data as well as on 
 **NOTE:** Copy `Assistant ID`, `Assistant URL` and `API key` and save the credentials in a text file for using it in later steps in this code pattern.
 
 ### 3. Create Twilio service
-Twlio is a SaaS offering that provides APIs to make and receive calls or text messages. As there are no APIs from WhatsApp directly availabe to send and receive WhatsApp messages programmatically, you will learn how to use Twilio's messaging service APIs that provides gateway to communicate with WhatsApp programmatically. Get started by creating a free Twilio service.
+Twilio is a SaaS offering that provides APIs to make and receive calls or text messages. As there are no APIs from WhatsApp directly availabe to send and receive WhatsApp messages programmatically, you will learn how to use Twilio's messaging service APIs that provides gateway to communicate with WhatsApp programmatically. Get started by creating a free Twilio service.
 
 - Create a free Twilio service here: <https://www.twilio.com/try-twilio>.
 
@@ -373,7 +373,7 @@ You can follow the workflow of the app as follows:
 
 ## Summary
 
-In this Code Pattern you learned how to create a WhatsApp Chatbot that take in voice input and get a reply from Watson Assistant. You also learned how to use, Watson Assistant in conjunction with Watson Speech to Text. 
+In this Code Pattern you learnt how to create a WhatsApp Chatbot that take in voice input and get a processed response from Watson Assistant. You also learnt how to use, Watson Assistant in conjunction with Watson Speech to Text. 
 
 This code pattern can be extended to any language. 
 
