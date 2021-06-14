@@ -1,4 +1,4 @@
-# Create a conversational voice bot on WhatsApp with Watson services
+# Create a conversational Voicebot on WhatsApp with Watson services
 
 Conversational AI VoiceBots are helping businesses automate repetitive, time-consuming queries and are giving your team more time to tackle more complex, high priority strategic tasks, while still ensuring that the customers are engaged. Chatbots that take in voice input can ingest, analyze, interpret, and respond to customer inquiries, with the end goal of either being able to answer a customer’s question in real-time or being able to continue a textual exchange with the customer to clarify the question at hand. 
 
