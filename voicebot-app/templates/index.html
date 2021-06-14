@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="IBM Code Pattern to showcase Watson Assistant Chatbot on WhatsApp">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/carbon-components/css/carbon-components.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>Voicebot Application</title>
+
+</head>
+
+<body style="background-color: rgb(34,34,34);">
+    <header class="bx--header" role="banner" aria-label="IBM Code Pattern" data-header>
+        <a class="bx--header__name" href="javascript:void(0)" title="">
+            <span class="bx--header__name--prefix">
+                Code
+                &nbsp;
+            </span>
+            Pattern
+        </a>
+
+        <div class="custom-spacing">
+            <div class="bx--grid">
+                <div class="bx--row">
+                    <div class="bx--col-lg-12">
+                        <div class="outside">
+                            <div class="inside">
+                                <h2>Configure Voicebot Application</h2>
+                                <br>
+                                <br>
+    
+                                <div>
+                                    <h5>Step 1: Add Twilio service credentials</h5>
+                                    <br>
+                                    <p>If you have created a twilio service, you can find the
+                                        <code>ACCOUNT SID</code> and <code>AUTH TOKEN</code> here: <a
+                                            href="https://www.twilio.com/console">https://www.twilio.com/console</a>.
+                                    </p>
+                                    <br>
+                                    <button class="bx--btn bx--btn--primary" type="button"
+                                        data-modal-target="#modal-twilio-credentials">
+                                        Add Twilio Credentials
+                                        <svg focusable="false" preserveAspectRatio="xMidYMid meet"
+                                            style="will-change: transform;" xmlns="http://www.w3.org/2000/svg"
+                                            class="bx--btn__icon" width="16" height="16" viewBox="0 0 16 16"
+                                            aria-hidden="true">
+                                            <path d="M9 7L9 3 7 3 7 7 3 7 3 9 7 9 7 13 9 13 9 9 13 9 13 7z"></path>
+                                        </svg>
+                                    </button>
+                                    <br>
+                                    <br>
+                                    
+                                    <p><strong>Status: </strong> <code id="twilioStatus"></code></p>
+                                    <br>
+                                    <br>
+                                    <p>If you have not created a twilio service, please create a service here: <a
+                                            href="https://www.twilio.com/try-twilio">https://www.twilio.com/try-twilio</a>.
+                                    </p>
+                                    <br>
+                                    <br>
+                                </div>
+                                <div>
+                                    <h5>Step 2: Add Watson service credentials</h5>
+                                    <br>
+                                    <p>Enter the Watson Assistant and Watson Speech to Text credentials
+                                    </p>
+                                    <br>
+                                    <button class="bx--btn bx--btn--primary" type="button"
+                                        data-modal-target="#modal-wa-credentials">
+                                        Add Watson Assistant Credentials
+                                        <svg focusable="false" preserveAspectRatio="xMidYMid meet"
+                                            style="will-change: transform;" xmlns="http://www.w3.org/2000/svg"
+                                            class="bx--btn__icon" width="16" height="16" viewBox="0 0 16 16"
+                                            aria-hidden="true">
+                                            <path d="M9 7L9 3 7 3 7 7 3 7 3 9 7 9 7 13 9 13 9 9 13 9 13 7z"></path>
+                                        </svg>
+                                    </button>
+                                    <button class="bx--btn bx--btn--primary" type="button"
+                                        data-modal-target="#modal-stt-credentials">
+                                        Add Speech to Text Credentials
+                                        <svg focusable="false" preserveAspectRatio="xMidYMid meet"
+                                            style="will-change: transform;" xmlns="http://www.w3.org/2000/svg"
+                                            class="bx--btn__icon" width="16" height="16" viewBox="0 0 16 16"
+                                            aria-hidden="true">
+                                            <path d="M9 7L9 3 7 3 7 7 3 7 3 9 7 9 7 13 9 13 9 9 13 9 13 7z"></path>
+                                        </svg>
+                                    </button>
+                                    <br>
+                                    <br>
+                                    
+                                    <p><strong>Watson Assistant Status: </strong> <code id="waStatus"></code></p>
+                                    <p><strong>Watson Speech to Text Status: </strong> <code id="sttStatus"></code></p>
+                                    <br>
+                                    <br>
+                                    <p>If you have not created a Watson Assistant Service, please create a service <a
+                                            href="https://cloud.ibm.com/catalog/services/watson-assistant">Here</a>.
+                                    </p>
+                                    <p>If you have not created a Watson Speech to Text Service, please create a service <a
+                                        href="https://cloud.ibm.com/catalog/services/speech-to-text">Here</a>.
+                                    </p>
+                                    <br>
+                                    <br>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- TWILIO MODAL START-->
+    
+            <div data-modal id="modal-twilio-credentials" class="bx--modal" role="dialog" aria-modal="true"
+                aria-labelledby="modal-twilio-credentials-label" aria-describedby="modal-twilio-credentials-heading"
+                tabindex="-1">
+                <div class="bx--modal-container">
+                    <div class="bx--modal-header">
+                        <p class="bx--modal-header__label bx--type-delta" id="modal-twilio-credentials-label">Step 1: Add
+                            Twilio service to the Application</p>
+                        <p class="bx--modal-header__heading bx--type-beta" id="modal-twilio-credentials-heading">
+                            Twilio Credentials</p>
+                        <button class="bx--modal-close" type="button" data-modal-close aria-label="close modal">
+                            <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                                xmlns="http://www.w3.org/2000/svg" class="bx--modal-close__icon" width="16" height="16"
+                                viewBox="0 0 16 16" aria-hidden="true">
+                                <path d="M12 4.7L11.3 4 8 7.3 4.7 4 4 4.7 7.3 8 4 11.3 4.7 12 8 8.7 11.3 12 12 11.3 8.7 8z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+    
+                    <!-- Note: Modals with content that scrolls, at any viewport, requires `tabindex="0"` on the `bx--modal-content` element -->
+    
+                    <div class="bx--modal-content bx--modal-content--with-form">
+                        <div class="bx--form-item">
+                            <label for="account_sid" class="bx--label">ACCOUNT SID</label>
+                            <input id="account_sid" type="text" class="bx--text-input" placeholder="Enter ACCOUNT SID" data-modal-primary-focus>
+                        </div>
+                        <br>
+                        <div class="bx--form-item">
+                            <label for="auth_token" class="bx--label">AUTH TOKEN</label>
+                            <input id="auth_token" type="password" class="bx--text-input" placeholder="Enter AUTH TOKEN">
+                        </div>
+                        <br>
+                    </div>
+                    <div class="bx--modal-content--overflow-indicator"></div>
+    
+                    <div class="bx--modal-footer">
+                        <button class="bx--btn bx--btn--secondary" type="button" data-modal-close>Cancel</button>
+                        <button class="bx--btn bx--btn--primary" id="twilio-cred-submit" type="button"
+                            data-modal-close>Submit</button>
+                    </div>
+                </div>
+                <!-- Note: focusable span allows for focus wrap feature within Modals -->
+                <span tabindex="0"></span>
+            </div>
+    
+            <!-- TWILIO MODAL END-->
+            <!-- Watson Assistant MODAL START-->
+    
+            <div data-modal id="modal-wa-credentials" class="bx--modal" role="dialog" aria-modal="true"
+                aria-labelledby="modal-wa-credentials-label" aria-describedby="modal-wa-credentials-heading"
+                tabindex="-1">
+                <div class="bx--modal-container">
+                    <div class="bx--modal-header">
+                        <p class="bx--modal-header__label bx--type-delta" id="modal-wa-credentials-label">Step 2.1: Add
+                            Watson Assistant service to the Application</p>
+                        <p class="bx--modal-header__heading bx--type-beta" id="modal-wa-credentials-heading">
+                            Watson Assistant Credentials</p>
+                        <button class="bx--modal-close" type="button" data-modal-close aria-label="close modal">
+                            <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                                xmlns="http://www.w3.org/2000/svg" class="bx--modal-close__icon" width="16" height="16"
+                                viewBox="0 0 16 16" aria-hidden="true">
+                                <path d="M12 4.7L11.3 4 8 7.3 4.7 4 4 4.7 7.3 8 4 11.3 4.7 12 8 8.7 11.3 12 12 11.3 8.7 8z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+    
+                    <!-- Note: Modals with content that scrolls, at any viewport, requires `tabindex="0"` on the `bx--modal-content` element -->
+    
+                    <div class="bx--modal-content bx--modal-content--with-form">
+                        <div class="bx--form-item">
+                            <label for="wa_apikey" class="bx--label">APIKEY</label>
+                            <input id="wa_apikey" type="password" class="bx--text-input" placeholder="Enter Watson Assistant APIKEY" data-modal-primary-focus>
+                        </div>
+                        <br>
+                        <div class="bx--form-item">
+                            <label for="wa_url" class="bx--label">URL</label>
+                            <input id="wa_url" type="text" class="bx--text-input" placeholder="Enter WATSON ASSISTANT URL">
+                        </div>
+                        <br>
+                        <div class="bx--form-item">
+                            <label for="wa_assistant_id" class="bx--label">ASSISTANT ID</label>
+                            <input id="wa_assistant_id" type="text" class="bx--text-input" placeholder="Enter Watson Assistant ASSISTANT ID">
+                        </div>
+                        <br>
+                    </div>
+                    <div class="bx--modal-content--overflow-indicator"></div>
+    
+                    <div class="bx--modal-footer">
+                        <button class="bx--btn bx--btn--secondary" type="button" data-modal-close>Cancel</button>
+                        <button class="bx--btn bx--btn--primary" id="wa-cred-submit" type="button"
+                            data-modal-close>Submit</button>
+                    </div>
+                </div>
+                <!-- Note: focusable span allows for focus wrap feature within Modals -->
+                <span tabindex="0"></span>
+            </div>
+    
+            <!-- Watson Assistant MODAL END-->
+            <!-- Watson Speech to Text MODAL START-->
+    
+            <div data-modal id="modal-stt-credentials" class="bx--modal" role="dialog" aria-modal="true"
+                aria-labelledby="modal-stt-credentials-label" aria-describedby="modal-stt-credentials-heading"
+                tabindex="-1">
+                <div class="bx--modal-container">
+                    <div class="bx--modal-header">
+                        <p class="bx--modal-header__label bx--type-delta" id="modal-stt-credentials-label">Step 2.2: Add
+                            Speech to Text service to the Application</p>
+                        <p class="bx--modal-header__heading bx--type-beta" id="modal-stt-credentials-heading">
+                            Speech to Text Credentials</p>
+                        <button class="bx--modal-close" type="button" data-modal-close aria-label="close modal">
+                            <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                                xmlns="http://www.w3.org/2000/svg" class="bx--modal-close__icon" width="16" height="16"
+                                viewBox="0 0 16 16" aria-hidden="true">
+                                <path d="M12 4.7L11.3 4 8 7.3 4.7 4 4 4.7 7.3 8 4 11.3 4.7 12 8 8.7 11.3 12 12 11.3 8.7 8z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+    
+                    <!-- Note: Modals with content that scrolls, at any viewport, requires `tabindex="0"` on the `bx--modal-content` element -->
+    
+                    <div class="bx--modal-content bx--modal-content--with-form">
+                        <div class="bx--form-item">
+                            <label for="stt_apikey" class="bx--label">APIKEY</label>
+                            <input id="stt_apikey" type="password" class="bx--text-input" placeholder="Enter Speech to Text APIKEY" data-modal-primary-focus>
+                        </div>
+                        <br>
+                        <div class="bx--form-item">
+                            <label for="stt_url" class="bx--label">URL</label>
+                            <input id="stt_url" type="text" class="bx--text-input" placeholder="Enter Speech to Text URL">
+                        </div>
+                        <br>
+                    </div>
+                    <div class="bx--modal-content--overflow-indicator"></div>
+    
+                    <div class="bx--modal-footer">
+                        <button class="bx--btn bx--btn--secondary" type="button" data-modal-close>Cancel</button>
+                        <button class="bx--btn bx--btn--primary" id="stt-cred-submit" type="button"
+                            data-modal-close>Submit</button>
+                    </div>
+                </div>
+                <!-- Note: focusable span allows for focus wrap feature within Modals -->
+                <span tabindex="0"></span>
+            </div>
+    
+            <!-- Watson Speech to Text MODAL END-->
+    
+        </div>
+        <script src="https://unpkg.com/carbon-components/scripts/carbon-components.min.js"></script>
+        <script src="../static/js/index.js"></script>
+        <script>
+            getTwilioStatus();
+            getWaStatus();
+            getSttStatus();
+        </script>
+</body>
+
+</html>

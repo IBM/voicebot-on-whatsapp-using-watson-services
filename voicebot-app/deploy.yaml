@@ -2,6 +2,7 @@ apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
   name: voicebot-app
+  namespace: default
   labels:
     app: flask
 spec:
@@ -25,6 +26,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: voicebot-app-service
+  namespace: default
 spec:
   selector:
     app: flask
@@ -34,8 +36,8 @@ spec:
     targetPort: 8080
     nodePort: 32000
   type: NodePort
-  
- ---
+
+---
 
 apiVersion: route.openshift.io/v1
 kind: Route
