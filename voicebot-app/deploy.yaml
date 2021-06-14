@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: voicebot-app
-        image: manojjahgirdar/voicebot-app:v2
+        image: manojjahgirdar/voicebot-app:v4
         ports:
         - containerPort: 8080
 
@@ -34,3 +34,18 @@ spec:
     targetPort: 8080
     nodePort: 32000
   type: NodePort
+  
+ ---
+
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: voicebot-app-route
+  namespace: default
+spec:
+  path: /
+  to:
+    kind: Service
+    name: voicebot-app-service
+  port:
+    targetPort: 8080
