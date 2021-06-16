@@ -350,8 +350,6 @@ Access the deployment URL created in previous step.
 - At this point you have successfully configured the Voicebot Application
 ### 6. Try out voicebot on WhatsApp
 
-- In the voicebot app, you will see **View Application in Action** tab.
-
 ![](doc/source/images/qrcode.png)
 
 - Scan the QR code in your Phone to open the WhatsApp chat with Twilio's messaging API.
