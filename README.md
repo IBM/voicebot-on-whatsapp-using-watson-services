@@ -15,7 +15,7 @@ When you have completed this code pattern, you will understand how to:
 * Integrate WhatsApp with Watson services.
 * Handle queries sent over voice on WhatsApp. 
 
-This code pattern can be configured to support multiple languages. Watson Assitant supports the following [languages](https://cloud.ibm.com/docs/assistant?topic=assistant-language-support).
+This code pattern can be configured to support multiple languages. Watson Assistant supports the following [languages](https://cloud.ibm.com/docs/assistant?topic=assistant-language-support).
 
 <!--add an image in this path-->
 ![architecture](doc/source/images/Architecture.png)
