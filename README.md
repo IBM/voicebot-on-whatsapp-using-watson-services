@@ -1,14 +1,21 @@
 # Create a conversational Voicebot on WhatsApp with Watson services
 
-Conversational AI VoiceBots are helping businesses automate repetitive, time-consuming queries and are giving your team more time to tackle more complex, high priority strategic tasks, while still ensuring that the customers are engaged. Chatbots that take in voice input can ingest, analyze, interpret, and respond to customer inquiries, with the end goal of either being able to answer a customer’s question in real-time or being able to continue a textual exchange with the customer to clarify the question at hand. 
+Conversational AI VoiceBots are helping businesses automate repetitive and time-consuming queries. This gives your team more time to tackle more complex, high priority strategic tasks, while still ensuring that the customers are engaged. Voicebots take in voice input can ingest, analyze, interpret, and respond to customer inquiries, with the end goal of either being able to answer a customer’s question in real-time or being able to continue a textual exchange with the customer to clarify the question at hand. 
 
-In this code pattern, We will build a framework using which the user will be able send his/her queries over voice on WhatsApp and get a reply from Watson Assistant. The query from the user is sent to the Watson Speech to Text service through a custom application. The output from the Watson Speech to Text service is then feed to Watson Assistant. Watson Assistant replies back to the user with an appropriate reply. 
+A Voicebot is useful in many scenarios where typing is not a convenient option:
+- Elderly customers find it more convenient to speak than to type. Some customers have better spoken language skills than written language skills. They find it easier to use VoiceBots.
+- Delivery executives on the move with a need to update systems.
+
+In this code pattern, you will look a scenario of a customer who speaking `Brazilian Portuguese` interact with a customer care center with `WhatsApp`.
+A framework is built using which the user will be able send queries using speech on WhatsApp, and then get a response from Watson Assistant. The query from the user is sent to the Watson Speech to Text service through a custom application. The output from the Watson Speech to Text service is then fed into Watson Assistant. Watson Assistant understands the query with the help of the built-in support for `Brazilian Portuguese` and responds back to the user with an appropriate reply. 
 
 When you have completed this code pattern, you will understand how to:
 * Use Watson Speech to Text service.
 * Use Watson Assistant service.
 * Integrate WhatsApp with Watson services.
 * Handle queries sent over voice on WhatsApp. 
+
+This code pattern can be configured to support multiple languages. Watson Assistant supports the following [languages](https://cloud.ibm.com/docs/assistant?topic=assistant-language-support).
 
 <!--add an image in this path-->
 ![architecture](doc/source/images/Architecture.png)
