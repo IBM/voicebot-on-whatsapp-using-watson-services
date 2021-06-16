@@ -6,7 +6,7 @@ A Voicebot is useful in many scenarios where typing is not a convenient option:
 - Elderly customers find it more convenient to speak than to type. Some customers have better spoken language skills than written language skills. They find it easier to use VoiceBots.
 - Delivery executives on the move with a need to update systems.
 
-In this code pattern, you will look a scenario of a customer who speaking `Brazilian Portuguese` interact with a customer care center with `WhatsApp`.
+In this code pattern, you will look a scenario of a customer speaking `Brazilian Portuguese` interact with a customer care center with `WhatsApp`.
 A framework is built using which the user will be able send queries using speech on WhatsApp, and then get a response from Watson Assistant. The query from the user is sent to the Watson Speech to Text service through a custom application. The output from the Watson Speech to Text service is then fed into Watson Assistant. Watson Assistant understands the query with the help of the built-in support for `Brazilian Portuguese` and responds back to the user with an appropriate reply. 
 
 When you have completed this code pattern, you will understand how to:
