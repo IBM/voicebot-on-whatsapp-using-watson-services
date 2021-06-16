@@ -43,7 +43,7 @@ When you have completed this code pattern, you will understand how to:
 
 1. [Clone the repo](#1-clone-the-repo)
 2. [Create Watson Services](#2-create-watson-services)
-3. [Build and Deploy the Voicebot Application](#3-build-and-deploy-the-voicebot-app)
+3. [Build and Deploy the Voicebot Application](#3-build-and-deploy-the-voicebot-application)
 4. [Create Twilio service](#4-create-twilio-service)
 5. [Configure Voicebot Application](#5-configure-voicebot-application)
 6. [Try out voicebot on WhatsApp](#6-try-out-voicebot-on-whatsapp)
