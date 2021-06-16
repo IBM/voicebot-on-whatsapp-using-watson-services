@@ -26,11 +26,6 @@ When you have completed this code pattern, you will understand how to:
 8. Twilio Programmable messaging service redirects the response message to WhatsApp
 10. User will be able to view the response message on WhatsApp
 
-<!--Optionally, update this section when the video is created-->
-# Watch the Video
-
-<!-- [![video](http://img.youtube.com/vi/Jxi7U7VOMYg/0.jpg)](https://www.youtube.com/watch?v=Jxi7U7VOMYg) -->
-
 # Pre Requisites
 
 1. [IBM Cloud Account](https://cloud.ibm.com/registration): Create an IBM Cloud account.
