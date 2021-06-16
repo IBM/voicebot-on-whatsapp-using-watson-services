@@ -43,8 +43,8 @@ When you have completed this code pattern, you will understand how to:
 
 1. [Clone the repo](#1-clone-the-repo)
 2. [Create Watson Services](#2-create-watson-services)
-3. [Create Twilio service](#3-create-twilio-service)
-4. [Build and Deploy the Voicebot Application](#4-build-and-deploy-the-voicebot-app)
+3. [Build and Deploy the Voicebot Application](#3-build-and-deploy-the-voicebot-app)
+4. [Create Twilio service](#4-create-twilio-service)
 5. [Configure Voicebot Application](#5-configure-voicebot-application)
 6. [Try out voicebot on WhatsApp](#6-try-out-voicebot-on-whatsapp)
 
@@ -133,55 +133,7 @@ Watson Assistant service can be created on IBM Cloud Pak for Data as well as on 
 
 **NOTE:** Copy `Assistant ID`, `Assistant URL` and `API key` and save the credentials in a text file for using it in later steps in this code pattern.
 
-### 3. Create Twilio service
-Twilio is a SaaS offering that provides APIs to make and receive calls or text messages. As there are no APIs from WhatsApp directly availabe to send and receive WhatsApp messages programmatically, you will learn how to use Twilio's messaging service APIs that provides gateway to communicate with WhatsApp programmatically. Get started by creating a free Twilio service.
-
-- Create a free Twilio service here: <https://www.twilio.com/try-twilio>.
-
->NOTE: - Once you create a Twilio service, you will have to verify your email id as well as your phone number.
-
->- You will receive verification link in the email provided during Twilio sign up. Go ahead and verify your email id.
-![](doc/source/images/verifyTwilio.png)
-
-- Once email id is verified you will be prompted to enter your phone number, submit that and you will get an OTP on your registered number, enter that back to verify.
-
-    ![](doc/source/images/verifyMobileTwilio.png)
-
-- On successful verification you should see a welcome greeting message, additionally you will see some questions, select as described below.
-
-    ![](doc/source/images/twilio-details.png)
-
-    Questions|Answers
-    --|--
-    Which Twilio product are you here to use?| WhatsApp
-    What do you plan to build with Twilio?| IVR & Bots
-    How do you want to build with Twilio?| With code
-    What is your preferred coding language?| Python
-    Would you like Twilio to host your code?| No, I want to use my own hosting service
-
-- Visit the Whatsapp section in Twilio <https://www.twilio.com/console/sms/whatsapp/sandbox>
-
-- You will see a popup box reqsuesting you to **Activate Your Sandbox**, click on **I agree** checkbox and click **Confirm**.
-![](doc/source/images/allowSandbox.png)
-
-- The sandbox for WhatsApp will appear, make a note of the `Sandbox Name` which will be prefixed with **join**, click on **Settings** on the left panel and select **WhatsApp Sandbox Settings**.
-![](doc/source/images/twilioSettings.png) 
-
-- In **WhatsApp Sandbox Settings** page, under **Sandbox Configuration**, there will be a field called **WHEN A MESSAGE COMES IN**, replace the existing URL in that field with the `URL` obtained by deploying the Voicebot Application from [Step 3](#3-build-and-deploy-the-voicebot-app), finally click on **Save** to save the configuration.
-![](doc/source/images/whatsappSandbox.png)
-
->NOTE: Sometimes the changes are not saved in Twilio WhatsApp Sandbox Settings even after clicking on save, reload the page to enusre the `URL` that you have entered in **WHEN A MESSAGE COMES IN** field is reflecting over there. If you still see the old URL over there then enter the `URL` from [Step 3](#3-build-and-deploy-the-voicebot-app) again and save it.
-
-- Now the Voicebot Application is configured in Twilio, any message that you send from WhatsApp from this point will go to the Voicebot Application via Twilio WhatsApp Sandbox. However to reply back to you from WhatsApp the Voicebot Application needs to establish connection with Twilio.
-
-- To establish connection between the Voicebot Application and Twilio we need to get the `account_sid` and `auth_token` from Twilio. 
-
-- Visit <https://www.twilio.com/console> and expand the **Project Info** tab. You will see the `ACCOUNT ID` and `AUTH TOKEN`, copy it in some notepad as it will be used in [Step 5](#5-configure-credentials).
- ![](doc/source/images/twilio-credentials-from-twilio-console.png)
-
-- At this point, you should have the `Sandbox Name`, `account_sid` and `auth_token` from Twilio service.
-
-### 4. Build and Deploy the Voicebot Application
+### 3. Build and Deploy the Voicebot Application
 The Voicebot Application is an intermediator that connects Watson services and Twilio service. This application must be deployed in order to access it from Twilio WhatsApp Sandbox. You can either deploy the application on your OpenShift cluster or on any public hosting services like Cloud Foundry. Follow the documentation accordingly
 
 <details><summary><b>Steps to Build and Deploy on OpenShift</b></summary>
@@ -327,6 +279,54 @@ Waiting for app to start...
 - At this point, you will have successfully deployed the Voicebot app on IBM Cloud. Now lets access it and see how it looks like.
 
 </details>
+
+### 4. Create Twilio service
+Twilio is a SaaS offering that provides APIs to make and receive calls or text messages. As there are no APIs from WhatsApp directly availabe to send and receive WhatsApp messages programmatically, you will learn how to use Twilio's messaging service APIs that provides gateway to communicate with WhatsApp programmatically. Get started by creating a free Twilio service.
+
+- Create a free Twilio service here: <https://www.twilio.com/try-twilio>.
+
+>NOTE: - Once you create a Twilio service, you will have to verify your email id as well as your phone number.
+
+>- You will receive verification link in the email provided during Twilio sign up. Go ahead and verify your email id.
+![](doc/source/images/verifyTwilio.png)
+
+- Once email id is verified you will be prompted to enter your phone number, submit that and you will get an OTP on your registered number, enter that back to verify.
+
+    ![](doc/source/images/verifyMobileTwilio.png)
+
+- On successful verification you should see a welcome greeting message, additionally you will see some questions, select as described below.
+
+    ![](doc/source/images/twilio-details.png)
+
+    Questions|Answers
+    --|--
+    Which Twilio product are you here to use?| WhatsApp
+    What do you plan to build with Twilio?| IVR & Bots
+    How do you want to build with Twilio?| With code
+    What is your preferred coding language?| Python
+    Would you like Twilio to host your code?| No, I want to use my own hosting service
+
+- Visit the Whatsapp section in Twilio <https://www.twilio.com/console/sms/whatsapp/sandbox>
+
+- You will see a popup box reqsuesting you to **Activate Your Sandbox**, click on **I agree** checkbox and click **Confirm**.
+![](doc/source/images/allowSandbox.png)
+
+- The sandbox for WhatsApp will appear, make a note of the `Sandbox Name` which will be prefixed with **join**, click on **Settings** on the left panel and select **WhatsApp Sandbox Settings**.
+![](doc/source/images/twilioSettings.png) 
+
+- In **WhatsApp Sandbox Settings** page, under **Sandbox Configuration**, there will be a field called **WHEN A MESSAGE COMES IN**, replace the existing URL in that field with the `URL` obtained by deploying the Voicebot Application from [Step 3](#3-build-and-deploy-the-voicebot-app), finally click on **Save** to save the configuration.
+![](doc/source/images/whatsappSandbox.png)
+
+>NOTE: Sometimes the changes are not saved in Twilio WhatsApp Sandbox Settings even after clicking on save, reload the page to enusre the `URL` that you have entered in **WHEN A MESSAGE COMES IN** field is reflecting over there. If you still see the old URL over there then enter the `URL` from [Step 3](#3-build-and-deploy-the-voicebot-app) again and save it.
+
+- Now the Voicebot Application is configured in Twilio, any message that you send from WhatsApp from this point will go to the Voicebot Application via Twilio WhatsApp Sandbox. However to reply back to you from WhatsApp the Voicebot Application needs to establish connection with Twilio.
+
+- To establish connection between the Voicebot Application and Twilio we need to get the `account_sid` and `auth_token` from Twilio. 
+
+- Visit <https://www.twilio.com/console> and expand the **Project Info** tab. You will see the `ACCOUNT ID` and `AUTH TOKEN`, copy it in some notepad as it will be used in [Step 5](#5-configure-credentials).
+ ![](doc/source/images/twilio-credentials-from-twilio-console.png)
+
+- At this point, you should have the `Sandbox Name`, `account_sid` and `auth_token` from Twilio service.
 
 ### 5. Configure Voicebot Application
 Access the deployment URL created in previous step.
